@@ -1,49 +1,62 @@
-var path = require("path");
-var express = require("express");
+var path = require('path');
+var express = require('express');
 var app = express();
 
 // Log the requests
 app.use(express.logger('dev'));
 
 // Serve static files
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'views')));
 app.engine('html', require('ejs').renderFile);
+app.set('views', path.join(__dirname, 'views'));
 
-app.use(express.bodyParser());
+app.use(express.urlencoded());
+
+// Main page handler
+app.get('/',
+    function(req, res) {
+        res.render('main.html');    
+    }
+);
 
 // Handle requests for a single book
-app.get('/books/:id',
-    function(req, res){
-        var bookData = {title: "the name of the book", author: "somewriter"};
-        res.render('bookView.ejs', {book: bookData});
+app.get('/books/:id', 
+	function(req, res){
+		renderBook(res, req.params.id);
+	}
+);
+
+app.post('/bookSearch',
+    function(req, res) {
+        var bookNum = req.body.bookNum;
+        renderBook(res, bookNum);
     }
 );
+
+function renderBook(res, num) {
+    var bookData = {title: "the name of the book", author: "some writer", number: num};
+	res.render('bookView.ejs', {book: bookData});
+}
 
 // Handle request for a list of all books
-app.get('/books',
-    function(req, res) {
-        res.send('A list of books should go here');    
-    }
-);
-
-app.get("/search",
-    function(req, res) {
-        res.render('./dice-site/ExpressTutorial/views/search.html');        
-    }
+app.get('/books', 
+	function(req, res) {
+		res.send('A list of books should go here');
+	}
 );
 
 app.post("/search",
-    function (req, res) {
-        var searchText = req.body.searchText;
-        res.send("<p>Your search for <b>" + searchText + "</b> returned no results</p>");
-    }
+	function(req, res) {
+		var searchText = req.body.searchText;
+		res.send("<p>Your search for <b>" + searchText + "</b> returned no results</p>");
+	}
 );
-
-//Route for everything else
-app.get('*',
-    function(req, res) {
-        res.send("Hello World");    
-    }
+	
+// Route for everything else
+app.get('*', 
+	function(req, res) {
+			res.send('Hello World');
+	}
 );
 
 // Fire it up!
