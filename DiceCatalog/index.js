@@ -2,6 +2,10 @@ var path = require("path");
 var express = require("express");
 var app = express();
 
+if (!process.env.PORT) {
+    process.env.PORT = 8080;   
+}
+
 app.use(express.logger('dev'));
 app.use(express.static(path.join(__dirname, "views")));
 app.use(express.urlencoded());
@@ -22,5 +26,5 @@ app.get("*",
     }
 );
 
-app.listen(8080);
-console.log("Listening on port " + 8080);
+app.listen(process.env.PORT);
+console.log("Listening on port " + process.env.PORT);
