@@ -2,8 +2,9 @@ var path = require("path");
 var express = require("express");
 var app = express();
 
+//Set up the port variable if we aren't in the c9.io IDE
 if (!process.env.PORT) {
-    process.env.PORT = 8080;   
+    process.env.PORT = 8080;
 }
 
 app.use(express.logger('dev'));
