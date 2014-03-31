@@ -2,9 +2,10 @@
 #!/bin/bash
 
 #Invoke the Forever module (to START our Node.js server).
-./node_modules/forever/bin/forever \
+DIR="$( cd "$( dirname "$0" )" && pwd )"
+$DIR/node_modules/forever/bin/forever \
         start \
         -al forever.log \
-        index.js
+        $DIR/index.js
 
 
