@@ -1,3 +1,6 @@
+var util = require("util");
+var exec = require("child_process").exec;
+var child;
 var path = require("path");
 var express = require("express");
 var app = express();
@@ -16,7 +19,31 @@ app.engine("html", require("ejs").renderFile);
 
 app.get("/", 
     function(req, res) {
+        res.render("placeholder.html");    
+    }
+);
+
+app.get("/test", 
+    function(req, res) {
         res.render("main.html");    
+    }
+);
+
+app.get("/deploy",
+    function(req, res) {
+        var result = 
+            function(error, stdout, stderr) { 
+                if (!error)
+                {
+                    res.send("Deployed");
+                }
+                else
+                {
+                    res.send("Something went wrong! \\n");
+                    res.send(stdout);
+                }
+            };
+        child = exec("deploy", result);
     }
 );
 
