@@ -1,5 +1,5 @@
 var util = require("util");
-var spawn = require("child_process").spawn;
+var exec = require("child_process").exec;
 var child;
 var path = require("path");
 var express = require("express");
@@ -35,7 +35,7 @@ app.get("/deploy",
             function(error, stdout, stderr) { 
                 if (!error)
                 {
-                    res.send("Deployed");
+                    res.send(stdout);
                 }
                 else
                 {
@@ -45,7 +45,28 @@ app.get("/deploy",
             };
         try
         {
-            child = spawn("deploy", result);
+            child = exec("deploy", result);
+        } catch (e) {}
+    }
+);
+
+app.get("/hmmm",
+    function(req, res) {
+        var result = 
+            function(error, stdout, stderr) { 
+                if (!error)
+                {
+                    res.send(stdout);
+                }
+                else
+                {
+                    res.send("Something went wrong! \\n");
+                    res.send(stdout);
+                }
+            };
+        try
+        {
+            child = exec("ls", result);
         } catch (e) {}
     }
 );
