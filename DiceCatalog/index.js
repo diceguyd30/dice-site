@@ -41,7 +41,7 @@ app.get("/deploy",
                 else
                 {
                     
-                    fs.writeFile("/tmp/test", error, function(err) {
+                    fs.writeFile("./test.txt", error, function(err) {
                         if(err) {
                             console.log(err);
                         } else {
@@ -73,7 +73,7 @@ app.get("/hmmm",
             };
         try
         {
-            child = exec("ls", result);
+            child = exec("pwd", result);
         } catch (e) {}
     }
 );
