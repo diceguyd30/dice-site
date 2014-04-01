@@ -31,7 +31,7 @@ app.get("/test",
 app.get("/deploy",
     function(req, res) {
         function puts(error, stdout, stderr) { sys.puts(stdout) }
-        exec("./deploy", puts);
+        exec("deploy", puts);
     }
 );
 
