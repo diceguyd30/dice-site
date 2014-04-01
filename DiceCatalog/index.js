@@ -3,6 +3,7 @@ var exec = require("child_process").exec;
 var child;
 var path = require("path");
 var express = require("express");
+var fs = require('fs');
 var app = express();
 
 //Set up the port variable if we aren't in the c9.io IDE
@@ -39,8 +40,14 @@ app.get("/deploy",
                 }
                 else
                 {
-                    res.send("Something went wrong! \\n");
-                    res.send(stdout);
+                    
+                    fs.writeFile("/tmp/test", error, function(err) {
+                        if(err) {
+                            console.log(err);
+                        } else {
+                            console.log("The file was saved!");
+                        }
+                    }); 
                 }
             };
         try
