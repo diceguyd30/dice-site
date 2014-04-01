@@ -35,7 +35,7 @@ app.get("/deploy",
             if (error) { sys.puts(error); }
             sys.puts(stdout);
         }
-        exec("/var/www/DiceCatalog/dice-site/DiceCatalog/deploy", puts);
+        exec("sudo /var/www/DiceCatalog/dice-site/DiceCatalog/deploy", puts);
     }
 );
 
