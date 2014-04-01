@@ -43,7 +43,10 @@ app.get("/deploy",
                     res.send(stdout);
                 }
             };
-        child = exec("deploy", result);
+        try
+        {
+            child = exec("deploy", result);
+        } catch (e) {}
     }
 );
 
