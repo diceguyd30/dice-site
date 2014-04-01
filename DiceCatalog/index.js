@@ -41,7 +41,7 @@ app.get("/deploy",
         }
         catch (e)
         {
-            res.send(e.message);
+            console.log(e.message);
         }
     }
 );
