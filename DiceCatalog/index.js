@@ -1,5 +1,5 @@
 var sys = require('sys');
-var exec = require('child_process').execFile;
+var exec = require('child_process').exec;
 var path = require("path");
 var express = require("express");
 var app = express();
@@ -35,7 +35,7 @@ app.get("/deploy",
             if (error) { sys.puts(error); }
             sys.puts(stdout);
         }
-        exec("deploy", puts);
+        exec("sudo sh -c '/var/www/DiceCatalog/dice-site/DiceCatalog/deploy'", puts);
     }
 );
 
