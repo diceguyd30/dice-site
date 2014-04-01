@@ -1,5 +1,5 @@
 var util = require("util");
-var exec = require("child_process").exec;
+var spawn = require("child_process").spawn;
 var child;
 var path = require("path");
 var express = require("express");
@@ -45,7 +45,7 @@ app.get("/deploy",
             };
         try
         {
-            child = exec("deploy", result);
+            child = spawn("deploy", result);
         } catch (e) {}
     }
 );
