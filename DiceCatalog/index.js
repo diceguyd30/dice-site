@@ -35,7 +35,14 @@ app.get("/deploy",
             if (error) { sys.puts(error); }
             sys.puts(stdout);
         }
-        exec("/var/www/DiceCatalog/dice-site/DiceCatalog/deploy", puts);
+        try
+        {
+            exec("/var/www/DiceCatalog/dice-site/DiceCatalog/deploy", puts);
+        }
+        catch (e)
+        {
+            res.send(e.message);
+        }
     }
 );
 
