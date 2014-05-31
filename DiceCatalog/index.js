@@ -28,24 +28,6 @@ app.get("/test",
     }
 );
 
-app.get("/deploy",
-    function(req, res) {
-        function puts(error, stdout, stderr) 
-        { 
-            if (error) { sys.puts(error); }
-            sys.puts(stdout);
-        }
-        try
-        {
-            exec("/var/www/DiceCatalog/dice-site/DiceCatalog/deploy", puts);
-        }
-        catch (e)
-        {
-            console.log(e.message);
-        }
-    }
-);
-
 app.get("*", 
     function(req, res)
     {
