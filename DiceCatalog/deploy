@@ -2,9 +2,13 @@
 
 #Invoke the Forever module (to START our Node.js server).
 DIR="$( cd "$( dirname "$0" )" && pwd )"
+<<<<<<< HEAD
 sudo sh -c 'echo "step 1" >> test.txt'
 cd $DIR/../ && sudo git pull && cd -
 sudo sh -c 'echo "step 2" >> test.txt'
 $DIR/webStop
 sudo sh -c 'echo "step 3" >> test.txt'
 $DIR/webStart
+=======
+cd $DIR/../ && sudo git pull && cd -
+>>>>>>> e82e04f01cfa4fbb5919829339a01d7001ebfcb9
