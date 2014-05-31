@@ -22,12 +22,6 @@ app.get("/",
     }
 );
 
-app.get("/test", 
-    function(req, res) {
-        res.render("main.html");    
-    }
-);
-
 app.get("*", 
     function(req, res)
     {
