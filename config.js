@@ -1,8 +1,5 @@
 function config(argv) {
-    this.ENVIRONMENT = 'Prod';
-    if (process.env.C9_USER) {
-        this.ENVIRONMENT = 'Dev';
-    }
+    this.ENVIRONMENT = argv.Environment
 
     this.PORT = process.env.PORT;
     if (!this.PORT) {
