@@ -1,13 +1,22 @@
-var config = {}
+function config(argv) {
+    this.ENVIRONMENT = 'Prod';
+    if (process.env.C9_USER) {
+        this.ENVIRONMENT = 'Dev';
+    }
 
-config.ENVIRONMENT = 'Prod';
-if (process.env.C9_USER) {
-    config.ENVIRONMENT = 'Dev';
+    this.PORT = process.env.PORT;
+    if (!this.PORT) {
+        this.PORT = 8080;
+    }
+    if (argv.port) {
+        this.PORT = argv.Port;
+    }
+
+    this.TESTTOKEN = argv.TestToken;
+    this.SESSION_SECRET = argv.SessionSecret;
 }
 
-config.PORT = process.env.PORT;
-if (!process.env.PORT) {
-    config.PORT = 8080;
-}
-
-module.exports = config;
+module.exports = 
+    function(argv) { 
+        return new config(argv); 
+    };
