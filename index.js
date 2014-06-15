@@ -21,6 +21,7 @@ function NavToPage(page) {
         if (!req.session.isAuthorized) {
             if (config.ENVIRONMENT == 'Test' && 
             req.query.tt != config.TESTTOKEN) {
+                res.send("Unauthorized Access");
                 return;
             }
             req.session.isAuthorized = true;
