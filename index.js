@@ -17,6 +17,7 @@ app.engine("html", require("ejs").renderFile);
 
 function NavToPage(page) {
     return function(req, res) {
+        console.log(req.query.tt);
         if (!req.session.isAuthorized) {
             if (config.ENVIRONMENT == 'Test' && 
             req.query.tt != config.TESTTOKEN) {

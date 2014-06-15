@@ -5,7 +5,7 @@ function config(argv) {
     if (!this.PORT) {
         this.PORT = 8080;
     }
-    if (argv.port) {
+    if (argv.Port) {
         this.PORT = argv.Port;
     }
 
