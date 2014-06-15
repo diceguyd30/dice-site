@@ -1,5 +1,0 @@
-#!/bin/bash
-
-#Invoke the Forever module (to STOP our Node.js server).
-DIR="$( cd "$( dirname "$0" )" && pwd )"
-$DIR/node_modules/forever/bin/forever stop $DIR/index.js
