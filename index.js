@@ -17,13 +17,13 @@ app.engine("html", require("ejs").renderFile);
 
 function NavToPage(page) {
     return function(req, res) {
-        if (!req.session.isAuthorized) {
+        if (req.session.auth_code != config.TESTTOKEN) {
             if (config.ENVIRONMENT == 'Test' && 
             req.query.tt != config.TESTTOKEN) {
                 res.send("Unauthorized Access");
                 return;
             }
-            req.session.isAuthorized = true;
+            req.session.auth_code = config.TESTTOKEN;
         }
         res.render(page);
     };
@@ -34,7 +34,7 @@ app.get("/", NavToPage("main.html"));
 app.get("*", 
     function(req, res)
     {
-        res.send("404 Not Found");
+        res.send("404 Not Found At All");
     }
 );
 
