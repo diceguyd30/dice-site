@@ -5,8 +5,7 @@ var express = require("express");
 var app = express();
 
 app.use(express.cookieParser(config.SESSION_SECRET));
-app.use(express.cookieSession({isAuthorized: false}));
-app.use(app.router);
+app.use(express.cookieSession({auth_code: null}));
 
 app.use(express.logger('dev'));
 app.use(express.static(path.join(__dirname, "views")));
