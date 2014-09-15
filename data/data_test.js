@@ -1,12 +1,9 @@
 //Unit tests for the data module
 
-exports["testSomething"] = function(test){
-    test.expect(1);
-    test.ok(true, "this assertion should pass");
-    test.done();
+exports.testStringLength = function(beforeExit, assert) {
+    assert.equal(6, 'foobar'.length);
 };
 
-exports["testSomethingElse"] = function(test){
-    test.ok(3 == 3, "this assertion should also pass");
-    test.done();
+exports.testBasicAssert = function(beforeExit, assert) {
+    assert.equal(true, true);
 };
