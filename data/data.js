@@ -1,9 +1,4 @@
-function data(config) {
-    
-}
-
-module.exports(
-    function(config) { 
-        return new data(config);
-    }
-);
+exports.testFunctionOne = function(x, y) {
+    if (y == 0) { return undefined; }
+    return x / y;
+};
