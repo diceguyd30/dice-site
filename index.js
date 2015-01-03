@@ -15,6 +15,7 @@ app.use(express.cookieSession({auth_code: null}));
 app.use(express.logger('dev'));
 app.use(express.static(path.join(__dirname, 'views')));
 app.use(express.urlencoded());
+app.use(express.errorHandler({dumpExceptions: true, showStack:true}));
 app.set('views', path.join(__dirname, 'views'));
 
 app.engine('html', require('ejs').renderFile);
@@ -42,8 +43,12 @@ app.get('*',
     }
 );
 
-var httpServer = http.createServer(app);
-var httpsServer = https.createServer(credentials, app);
-httpServer.listen(config.PORT);
-httpsServer.listen(config.HTTPSPORT);
+if (config.ENVIRONMENT == 'dev') {
+    var httpServer = http.createServer(app);
+    httpServer.listen(config.PORT);
+} else {
+    var httpsServer = https.createServer(credentials, app);
+    httpsServer.listen(config.PORT);
+}
+
 console.log('Listening on port ' + config.PORT);

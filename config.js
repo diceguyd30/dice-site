@@ -8,9 +8,6 @@ function config(argv) {
     if (argv.port) {
         this.PORT = argv.port;
     }
-    if (argv.https_port) {
-        this.HTTPSPORT = argv.https_port
-    }
 
     this.TESTTOKEN = argv.test_token;
     this.SESSION_SECRET = argv.session_secret;
