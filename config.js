@@ -1,16 +1,19 @@
 function config(argv) {
-    this.ENVIRONMENT = argv.Environment
+    this.ENVIRONMENT = argv.environment
 
     this.PORT = process.env.PORT;
     if (!this.PORT) {
-        this.PORT = 8080;
+        this.PORT = 8443;
     }
-    if (argv.Port) {
-        this.PORT = argv.Port;
+    if (argv.port) {
+        this.PORT = argv.port;
+    }
+    if (argv.https_port) {
+        this.HTTPSPORT = argv.https_port
     }
 
-    this.TESTTOKEN = argv.TestToken;
-    this.SESSION_SECRET = argv.SessionSecret;
+    this.TESTTOKEN = argv.test_token;
+    this.SESSION_SECRET = argv.session_secret;
 }
 
 module.exports = 
