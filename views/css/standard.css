@@ -1,12 +1,12 @@
 .centered {
   position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-top: -50px;
-    margin-left: -200px;
+  top: 50%;
+  left: 50%;
+  margin-top: -50px;
+  margin-left: -200px;
 }
 
 .titleText {
-   font-size: large; 
-   font-weight: bold;
+  font-size: large; 
+  font-weight: bold;
 }
