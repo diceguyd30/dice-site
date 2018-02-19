@@ -39,7 +39,7 @@ app.get('/', NavToPage('main.html'));
 app.get('*', 
   function(req, res)
   {
-    res.send('404 Not Found At All');
+    res.send(req);
   }
 );
 
